@@ -17,5 +17,5 @@ npx hardhat run scripts/deploy.js
 Runtime
 ```
 node: v16.2.0
-npm: v8.11.0
+npm/npx: v8.11.0
 ```
