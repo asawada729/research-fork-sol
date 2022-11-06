@@ -10,7 +10,7 @@ describe("ResearchFork", function () {
   // and reset Hardhat Network to that snapshot in every test.
   async function deployResearchForkFixture() {
     const tokenName = "ResearchFork Token";
-    const tokenSymbol = "RFT"
+    const tokenSymbol = "RFT";
     // Contracts are deployed using the first signer/account by default
     const [owner, curator, seed1, seed2] = await ethers.getSigners();
     const metadataUri = 'ipfs://QmeBChy1AYra2P9EnBoUGY61h6N3D6i4mbAAD7DChWw2ft/12.json'
@@ -39,6 +39,11 @@ describe("ResearchFork", function () {
       const { researchFork, owner, curator, seed1, seed2 } = await loadFixture(deployResearchForkFixture);
 
       expect(await researchFork.metadataUri()).to.equal('ipfs://QmeBChy1AYra2P9EnBoUGY61h6N3D6i4mbAAD7DChWw2ft/12.json');
+    });
+    it("should initialize owner", async function() {
+      const { researchFork, owner, curator, seed1, seed2 } = await loadFixture(deployResearchForkFixture);
+
+      expect(await researchFork.owner()).to.equal(await owner.getAddress());
     });
   });
 
